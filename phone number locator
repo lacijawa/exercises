@@ -1,0 +1,25 @@
+print("This is your phone number locator. Please follow the instrucions below.")
+
+import phonenumbers
+
+# Program to convert input to phonenumber format
+nmber = input("Please insert your phone number in form (+country code and number)... ")
+phoneNumber = phonenumbers.parse(nmber)
+
+print(phoneNumber)
+
+from phonenumbers import timezone
+# Program to get timezone a phone number
+timeZone = timezone.time_zones_for_number(phoneNumber)
+print("Time zone for the mobile number is : ", timeZone)
+
+ #Program to find carrier and region of a phone number
+
+from phonenumbers import geocoder
+from phonenumbers import carrier
+
+geocode = geocoder.country_name_for_number(phoneNumber, "sk")
+carrier = carrier.name_for_number(phoneNumber, "sk")
+
+print(geocode)
+print(carrier)
