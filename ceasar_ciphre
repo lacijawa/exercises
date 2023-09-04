@@ -1,1 +1,26 @@
+#Cézarova šifra je druh šifry, pri ktorej je každé písmeno správy posunuté o n pozícií ďalej v abecede,
+#pričom n môže byť 1 až m − 1, kde m je počet znakov príslušnej abecedy.
+#V prípade písmena vyskytujúceho sa na konci abecedy sa toto písmeno posunie opäť na začiatok abecedy.
 
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" # 26 characters
+
+def encode_ceasar (text, shift):
+    shifted_text = ""
+    for letter in text:
+        index = alphabet.index(letter)
+        shifted_index = index + shift
+        new_index = shifted_index%26
+        shifted_text = shifted_text + alphabet[new_index]
+    return shifted_text
+
+print(encode_ceasar("ABCDE", 1))
+
+def decode_ceasar (text, shift):
+    shifted_text = ""
+    for letter in text:
+        index = alphabet.index(letter)
+        shifted_index = index - shift
+        new_index = shifted_index%26
+        shifted_text = shifted_text + alphabet[new_index]
+    return shifted_text
+print(decode_ceasar("BCDEF", 1))
